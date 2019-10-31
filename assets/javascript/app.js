@@ -13,7 +13,7 @@ $(document).ready(function(){
    $(".input-group").hide();  
    $("#Done").hide();  
    $("#allDone").hide();    
-   var counter =120;  
+   var counter = 45;  
    var myRadio;  
    var correct = 0;
    var incorrect = 0; 
@@ -27,25 +27,46 @@ $(document).ready(function(){
 ===========================================================================*/    
     
   $("#Start").on("click", function(){
-      $(".btn").hide();
-      setInterval(myCounter,1000);
+     
+    
+    //setInterval(myCounter,100);
+
+    $(".btn").hide();
       $(".startTimer").show();
       $(".questions").show();
       $(".input-group").show(); 
       $("#Done").show(); 
-        
+     
+      myVar = setInterval(function(){
+        counter -= 1 ;  
+        document.getElementById('counting').innerHTML= "Time Remaining: " + counter + " seconds"
+        if (counter < 1) {
+          alert("Your time has finished, click on Done")
+          stopCounter();
+        }
+      }, 1000);
       
-       
+      function stopCounter(){
+         
+          clearTimeout(myVar);
+          alert("your time has finished, please click on the buttom Done")
+      }
 
-      
   });  
 
-  function   myCounter(){
-          counter -= 1 ;
-          document.getElementById('counting').innerHTML= "Time Remaining: " + counter + " seconds";
-          //console.log(counter) 
+
+  
+
+
+//   function   myCounter(){
+//           counter -= 1 ;
+//           document.getElementById('counting').innerHTML= "Time Remaining: " + counter + " seconds";
+//           if (counter == 0){
+//             clearTimeout(myCounter)
+//           }
+           
          
-  } 
+//   } 
 
  
     
